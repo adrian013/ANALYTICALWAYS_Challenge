@@ -25,7 +25,8 @@ namespace AcmeSchool.Controllers
 
 
         [HttpPost]
-        public IActionResult GeneratePaymentLink([FromBody] PayRegistrationFeeCommand payRegistrationFeeCommand)
+        [Route("PaymentLink")]
+        public IActionResult PaymentLink([FromBody] PayRegistrationFeeCommand payRegistrationFeeCommand)
         {
             if (!ModelState.IsValid)
             {
@@ -39,12 +40,17 @@ namespace AcmeSchool.Controllers
                 throw new KeyNotFoundException();
             }
 
-            return Ok(_paymentGateway.GetPaymentLink(course.RegistrationFee));
+            if(!course.RegistrationFee.HasValue || course.RegistrationFee.Value <= 0)
+            {
+                return BadRequest("No fee for course");
+            }
+
+            return Ok(_paymentGateway.GetPaymentLink(course.RegistrationFee.Value));
         }
 
       
 
-        [HttpPost]
+        [HttpPost()]
         public IActionResult Enroll([FromBody] EnrollStudentCommand enrollStudentCommand)
         {
             if (!ModelState.IsValid)

@@ -1,6 +1,7 @@
 ﻿using AcmeSchool.Commands;
 using AcmeSchool.DTOs;
 using AcmeSchool.Model;
+using AcmeSchool.Repositories;
 using AutoMapper;
 
 namespace AcmeSchool.Service
@@ -8,18 +9,20 @@ namespace AcmeSchool.Service
     public class EnrollmentService : IEnrollmentService
     {
         private readonly IMapper _mapper;
-        public EnrollmentService(IMapper mapper)
+        private readonly IEnrollmentRepository _enrollmentRepository;
+        public EnrollmentService(IMapper mapper, IEnrollmentRepository enrollmentRepository)
         {
             _mapper = mapper;
+            _enrollmentRepository = enrollmentRepository;
         }
 
 
         public void Create(EnrollStudentCommand enrollment)
         {
-            //var entity = _mapper.Map<Student>(student);
+            var entity = _mapper.Map<Enrollment>(enrollment);
 
-
-            throw new NotImplementedException();
+            _enrollmentRepository.Add(entity);
+            _enrollmentRepository.Commit();
         }
     }
 }

@@ -19,16 +19,25 @@ namespace AcmeSchool.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetAllWithStudents(Guid? courseId)
+        [Route("GetAllWithStudents")]
+        public ActionResult GetAllWithStudents()
         {
-            if(!courseId.HasValue)
+            var courses = _courseService.GetAllWithStudents();
+            return Ok(courses);
+        }
+
+        [HttpGet]
+        public ActionResult Get(Guid? courseId)
+        {
+            if (!courseId.HasValue)
             {
                 return BadRequest();
             }
 
-            var courses = _courseService.GetAllWithStudents(courseId.Value);
+            var courses = _courseService.GetById(courseId.Value);
             return Ok(courses);
         }
+
 
         [HttpPost]
         public IActionResult Post([FromBody] CreateCourseCommand createCourseCommand)
@@ -38,8 +47,8 @@ namespace AcmeSchool.Controllers
                 return BadRequest(ModelState);
             }
 
-            _courseService.Create(createCourseCommand);
-            return Ok();
+            var entityId = _courseService.Create(createCourseCommand);
+            return Ok(entityId);
         }
       
     }

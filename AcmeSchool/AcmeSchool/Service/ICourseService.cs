@@ -5,9 +5,8 @@ namespace AcmeSchool.Service
 {
     public interface ICourseService
     {
-        void Create(CreateCourseCommand createCourseCommand);
-        void Enroll(EnrollStudentCommand enrollStudentCommand);
-        IEnumerable<CourseDTO> GetAllWithStudents(Guid courseId);
+        Guid Create(CreateCourseCommand createCourseCommand);
+        IEnumerable<CourseDTO> GetAllWithStudents();
         CourseDTO GetById(Guid courseId);
     }
 }

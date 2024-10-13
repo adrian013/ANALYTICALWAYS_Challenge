@@ -1,28 +1,51 @@
 ﻿using AcmeSchool.Commands;
 using AcmeSchool.DTOs;
+using AcmeSchool.Model;
+using AcmeSchool.Repositories;
+using AutoMapper;
 
 namespace AcmeSchool.Service
 {
     public class CourseService : ICourseService
     {
-        public void Create(CreateCourseCommand createCourseCommand)
+        private readonly IMapper _mapper;
+        private readonly ICourseRepository _courseRepository;
+        public CourseService(IMapper mapper, ICourseRepository courseRepository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _courseRepository = courseRepository;
         }
 
-        public void Enroll(EnrollStudentCommand enrollStudentCommand)
+
+        public Guid Create(CreateCourseCommand createCourseCommand)
         {
-            throw new NotImplementedException();
+            var entity = _mapper.Map<Course>(createCourseCommand);
+
+            _courseRepository.Add(entity);
+            _courseRepository.Commit();
+
+            return entity.Id;
         }
 
-        public IEnumerable<CourseDTO> GetAllWithStudents(Guid courseId)
+        public IEnumerable<CourseDTO> GetAllWithStudents()
         {
-            throw new NotImplementedException();
+            var courses = _courseRepository.GetAllWithStudents();
+
+            var coursesDTO = new List<CourseDTO>();
+
+            foreach (var course in courses)
+            {
+                coursesDTO.Add(_mapper.Map<CourseDTO>(course));
+            }
+
+            return coursesDTO;
         }
 
         public CourseDTO GetById(Guid courseId)
         {
-            throw new NotImplementedException();
+            var course = _courseRepository.GetById(courseId);
+
+            return _mapper.Map<CourseDTO>(course);
         }
     }
 }

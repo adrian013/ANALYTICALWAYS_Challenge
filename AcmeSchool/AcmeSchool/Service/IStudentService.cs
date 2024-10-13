@@ -1,9 +1,12 @@
 ﻿using AcmeSchool.Commands;
+using AcmeSchool.DTOs;
 
 namespace AcmeSchool.Service
 {
     public interface IStudentService
     {
-        void Create(CreateStudentCommand createStudentCommand);
+        Guid Create(CreateStudentCommand createStudentCommand);
+        StudentDTO GetById(Guid studentId);
+
     }
 }

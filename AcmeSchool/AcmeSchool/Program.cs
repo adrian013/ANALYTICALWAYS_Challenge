@@ -1,6 +1,11 @@
 
+using AcmeSchool.External;
 using AcmeSchool.Middleware;
+using AcmeSchool.Persistence.InMemory;
+using AcmeSchool.Repositories;
 using AcmeSchool.Service;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace AcmeSchool
@@ -18,8 +23,19 @@ namespace AcmeSchool
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddTransient<IStudentService, StudentService>();
-            builder.Services.AddTransient<ICourseService, CourseService>();
+
+            builder.Services.AddDbContext<ApiContext>();
+
+            //Add services
+            builder.Services.AddScoped<IStudentService, StudentService>();
+            builder.Services.AddScoped<ICourseService, CourseService>();
+            builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
+            builder.Services.AddScoped<IPaymentGateway, PaymentGateway>();
+
+            //Add repositories
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

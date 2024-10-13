@@ -1,11 +1,11 @@
-﻿namespace AcmeSchool.Model
+﻿using AcmeSchool.Persistence;
+
+namespace AcmeSchool.Model
 {
-    public class Student
+    public class Student : Entity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-
-        public IEnumerable<Course>? Courses { get; set; }
+        public List<Enrollment> Enrollments { get; set; }
     }
 }

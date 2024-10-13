@@ -19,6 +19,19 @@ namespace AcmeSchool.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult Get(Guid? studentId)
+        {
+            if (!studentId.HasValue)
+            {
+                return BadRequest();
+            }
+
+            var courses = _studentService.GetById(studentId.Value);
+            return Ok(courses);
+        }
+
+
         [HttpPost]
         public IActionResult Post([FromBody] CreateStudentCommand createStudentCommand)
         {
@@ -27,8 +40,8 @@ namespace AcmeSchool.Controllers
                 return BadRequest(ModelState);
             }
 
-            _studentService.Create(createStudentCommand);
-            return Ok();
+            var entityId = _studentService.Create(createStudentCommand);
+            return Ok(entityId);
         }
     }
 }
