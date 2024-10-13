@@ -14,6 +14,7 @@ namespace AcmeSchool.Utils
             CreateMap<EnrollStudentCommand, Enrollment>();
 
             CreateMap<Course, CourseDTO>();
+            CreateMap<Enrollment, EnrollmentDTO>();
             CreateMap<Student, StudentDTO>();
 
         }

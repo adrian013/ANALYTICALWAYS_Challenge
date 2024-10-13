@@ -9,7 +9,8 @@
 
         public bool validatePayment(string paymentId)
         {
-            return !string.IsNullOrEmpty(paymentId);
+            //Simulated validation of paymentId
+            return paymentId == "ValidPaymentId";
         }
     }
 }

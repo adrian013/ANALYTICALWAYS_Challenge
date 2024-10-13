@@ -3,6 +3,7 @@ using AcmeSchool.DTOs;
 using AcmeSchool.Model;
 using AcmeSchool.Repositories;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace AcmeSchool.Service
 {
@@ -35,7 +36,9 @@ namespace AcmeSchool.Service
 
             foreach (var course in courses)
             {
-                coursesDTO.Add(_mapper.Map<CourseDTO>(course));
+                var courseDTO = _mapper.Map<CourseDTO>(course);
+
+                coursesDTO.Add(courseDTO);
             }
 
             return coursesDTO;

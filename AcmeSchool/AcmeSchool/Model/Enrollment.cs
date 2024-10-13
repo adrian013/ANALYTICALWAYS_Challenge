@@ -7,6 +7,7 @@ namespace AcmeSchool.Model
         public Guid CourseId { get; set; }
         public Guid StudentId { get; set; }
         public string PaymentId { get; set; }
+        public DateTime EnrollmentDate { get; set; }
 
         public Course Course { get; set; }
         public Student Student { get; set; }

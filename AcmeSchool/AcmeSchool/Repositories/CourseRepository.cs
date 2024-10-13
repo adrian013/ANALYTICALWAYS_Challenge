@@ -22,12 +22,17 @@ namespace AcmeSchool.Repositories
 
             foreach(var course in courses)
             {
-                //course.Enrollments = _enrollmentRepository.GetByIdAsync
+                var enrollments = _context.Enrollments.Where(x => x.CourseId == course.Id).ToList();
+
+                foreach(var enrollment in enrollments)
+                {
+                    enrollment.Student = _context.Students.First(x => x.Id == enrollment.StudentId);
+                }
+
+                course.Enrollments = enrollments;
             }
 
             return _context.Courses.ToList();
-
         }
-
     }
 }
