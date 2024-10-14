@@ -7,7 +7,7 @@
             return "https://FakePaymentProvider.Payment.com";
         }
 
-        public bool validatePayment(string paymentId)
+        public bool ValidatePayment(string paymentId)
         {
             //Simulated validation of paymentId
             return paymentId == "ValidPaymentId";

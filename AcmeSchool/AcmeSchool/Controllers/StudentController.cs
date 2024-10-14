@@ -27,8 +27,15 @@ namespace AcmeSchool.Controllers
                 return BadRequest();
             }
 
-            var courses = _studentService.GetById(studentId.Value);
-            return Ok(courses);
+            var student = _studentService.GetById(studentId.Value);
+
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(student);
         }
 
 

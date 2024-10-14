@@ -23,6 +23,12 @@ namespace AcmeSchool.Controllers
         public ActionResult GetAllWithStudents()
         {
             var courses = _courseService.GetAllWithStudents();
+
+            if(courses == null)
+            {
+                return NoContent();
+            }
+
             return Ok(courses);
         }
 
@@ -34,8 +40,14 @@ namespace AcmeSchool.Controllers
                 return BadRequest();
             }
 
-            var courses = _courseService.GetById(courseId.Value);
-            return Ok(courses);
+            var course = _courseService.GetById(courseId.Value);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(course);
         }
 
 

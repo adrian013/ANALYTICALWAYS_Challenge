@@ -10,7 +10,7 @@ namespace AcmeSchool.Commands
         [Required]
         public Guid StudentId { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings=false)]
         public string PaymentId { get; set; }
     }
 }

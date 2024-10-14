@@ -37,7 +37,7 @@ namespace AcmeSchool.Controllers
 
             if (course == null) 
             {
-                throw new KeyNotFoundException();
+                return NotFound();
             }
 
             if(!course.RegistrationFee.HasValue || course.RegistrationFee.Value <= 0)
@@ -58,8 +58,8 @@ namespace AcmeSchool.Controllers
                 return BadRequest(ModelState);
             }
 
-            _enrollmentService.Create(enrollStudentCommand);
-            return Ok();
+            var id = _enrollmentService.Create(enrollStudentCommand);
+            return Ok(id);
         }
     }
 }

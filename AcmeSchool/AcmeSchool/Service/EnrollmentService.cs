@@ -24,7 +24,7 @@ namespace AcmeSchool.Service
         }
 
 
-        public void Create(EnrollStudentCommand enrollment)
+        public Guid Create(EnrollStudentCommand enrollment)
         {
             var course = _courseRepository.GetById(enrollment.CourseId);
             var student = _studentRepository.GetById(enrollment.StudentId);
@@ -39,7 +39,7 @@ namespace AcmeSchool.Service
                 throw new KeyNotFoundException($"StudentId: {enrollment.StudentId} not found");
             }
             
-            if(!_paymentGateway.validatePayment(enrollment.PaymentId))
+            if(!_paymentGateway.ValidatePayment(enrollment.PaymentId))
             {
                 throw new ArgumentException($"PaymentId: {enrollment.PaymentId} is not valid");
             }
@@ -50,6 +50,8 @@ namespace AcmeSchool.Service
 
             _enrollmentRepository.Add(entity);
             _enrollmentRepository.Commit();
+
+            return entity.Id;
         }
     }
 }

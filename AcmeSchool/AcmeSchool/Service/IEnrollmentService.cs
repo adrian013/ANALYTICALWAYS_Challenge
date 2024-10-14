@@ -4,6 +4,6 @@ namespace AcmeSchool.Service
 {
     public interface IEnrollmentService
     {
-        void Create(EnrollStudentCommand enrollStudentCommand);
+        Guid Create(EnrollStudentCommand enrollStudentCommand);
     }
 }

@@ -4,6 +4,6 @@
     {
         string GetPaymentLink(decimal amount);
 
-        bool validatePayment(string paymentId);
+        bool ValidatePayment(string paymentId);
     }
 }
