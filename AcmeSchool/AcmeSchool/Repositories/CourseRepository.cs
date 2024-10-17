@@ -6,12 +6,10 @@ namespace AcmeSchool.Repositories
     public class CourseRepository : Repository<Course, ApiContext>, ICourseRepository
     {
         private readonly ApiContext _context;
-        private readonly IEnrollmentRepository _enrollmentRepository;
 
-        public CourseRepository(ApiContext context, IEnrollmentRepository enrollmentRepository) : base(context)
+        public CourseRepository(ApiContext context) : base(context)
         {
             _context = context;
-            _enrollmentRepository = enrollmentRepository;
         }
 
         public IEnumerable<Course> GetAllWithStudents()

@@ -49,7 +49,7 @@ namespace AcmeSchool.Service
             entity.EnrollmentDate = DateTime.Now;
 
             _enrollmentRepository.Add(entity);
-            _enrollmentRepository.Commit();
+            _enrollmentRepository.SaveChanges();
 
             return entity.Id;
         }

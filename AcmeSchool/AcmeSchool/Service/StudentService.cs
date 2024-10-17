@@ -28,7 +28,7 @@ namespace AcmeSchool.Service
             var entity = _mapper.Map<Student>(createStudentCommand);
 
             _studentRepository.Add(entity);
-            _studentRepository.Commit();
+            _studentRepository.SaveChanges();
 
             return entity.Id;
         }

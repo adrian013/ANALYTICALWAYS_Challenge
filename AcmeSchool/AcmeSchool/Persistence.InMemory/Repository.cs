@@ -30,33 +30,12 @@ namespace AcmeSchool.Persistence.InMemory
             return _context.Find<T>(id);
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
-        {
-            return await _context.FindAsync<T>(id);
-        }
-
         public void Update(T entity)
         {
             _context.Attach(entity);
         }
 
-        public async Task CommitAsync()
-        {
-            using var transaction = await _context.Database.BeginTransactionAsync();
-
-            try
-            {
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-            }
-            catch
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }
-        }
-
-        public void Commit()
+        public void SaveChanges()
         {
             _context.SaveChanges();
         }

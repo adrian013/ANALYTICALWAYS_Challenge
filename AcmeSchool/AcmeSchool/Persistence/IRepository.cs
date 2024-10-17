@@ -15,13 +15,6 @@
         T GetById(Guid id);
 
         /// <summary>
-        /// Fetches and returns the entity identified by <paramref name="id"/> asynchronously.
-        /// </summary>
-        /// <param name="id">The id of the entity to retrieve.</param>
-        /// <returns>The entity identified by id, null if it does not exist.</returns>
-        Task<T> GetByIdAsync(Guid id);
-
-        /// <summary>
         /// Adds an entity to the repository.
         /// </summary>
         /// <param name="entity">The entity to add.</param>

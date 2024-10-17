@@ -23,7 +23,7 @@ namespace AcmeSchool.Service
             var entity = _mapper.Map<Course>(createCourseCommand);
 
             _courseRepository.Add(entity);
-            _courseRepository.Commit();
+            _courseRepository.SaveChanges();
 
             return entity.Id;
         }
@@ -34,11 +34,14 @@ namespace AcmeSchool.Service
 
             var coursesDTO = new List<CourseDTO>();
 
-            foreach (var course in courses)
+            if (courses != null)
             {
-                var courseDTO = _mapper.Map<CourseDTO>(course);
+                foreach (var course in courses)
+                {
+                    var courseDTO = _mapper.Map<CourseDTO>(course);
 
-                coursesDTO.Add(courseDTO);
+                    coursesDTO.Add(courseDTO);
+                }
             }
 
             return coursesDTO;

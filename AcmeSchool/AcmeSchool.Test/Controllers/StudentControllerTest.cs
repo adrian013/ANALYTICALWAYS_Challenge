@@ -28,7 +28,6 @@ namespace AcmeSchool.Test.Controllers
             _studentServiceMock = new Mock<IStudentService>();
         }
 
-
         #region GetStudent
         [Fact]
         public void GetStudent_Returns_200_If_Student_Exists()
@@ -69,7 +68,6 @@ namespace AcmeSchool.Test.Controllers
             Assert.IsType<BadRequestResult>(result);
         }
         #endregion
-
 
         #region PostStudent
         [Fact]

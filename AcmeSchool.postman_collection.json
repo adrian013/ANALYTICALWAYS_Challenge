@@ -1,0 +1,469 @@
+{
+	"info": {
+		"_postman_id": "05b1630b-6ae0-46e6-bbae-fad6e8acbfac",
+		"name": "AcmeSchool",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1384586"
+	},
+	"item": [
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "GetAllWithStudents",
+					"item": [
+						{
+							"name": "/Course/GetAllWithStudents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Course/GetAllWithStudents",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Course",
+										"GetAllWithStudents"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Course/GetAllWithStudents",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Course",
+												"GetAllWithStudents"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/Course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Course?courseId=7e79a017-b458-411a-9c55-d1ef4c2de6a1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Course"
+							],
+							"query": [
+								{
+									"key": "courseId",
+									"value": "7e79a017-b458-411a-9c55-d1ef4c2de6a1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Course?courseId=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Course"
+									],
+									"query": [
+										{
+											"key": "courseId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"endtDate\": \"2024-12-31\",\n  \"name\": \"Some amazing course\",\n  \"startDate\": \"2024-11-01\",\n  \"registrationFee\": \"999\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Course",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Course"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"endtDate\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"registrationFee\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Course",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Course"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Enrollment",
+			"item": [
+				{
+					"name": "PaymentLink",
+					"item": [
+						{
+							"name": "/Enrollment/PaymentLink",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"courseId\": \"7e79a017-b458-411a-9c55-d1ef4c2de6a1\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Enrollment/PaymentLink",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Enrollment",
+										"PaymentLink"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"courseId\": \"<uuid>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Enrollment/PaymentLink",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Enrollment",
+												"PaymentLink"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/Enrollment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseId\": \"7e79a017-b458-411a-9c55-d1ef4c2de6a1\",\n  \"paymentId\": \"ValidPaymentId\",\n  \"studentId\": \"d4a913f7-3775-4208-b67d-bf1781146d15\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Enrollment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Enrollment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"courseId\": \"<uuid>\",\n  \"paymentId\": \"<string>\",\n  \"studentId\": \"<uuid>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Enrollment",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Enrollment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "/Student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Student?studentId=d4a913f7-3775-4208-b67d-bf1781146d15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Student"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": "d4a913f7-3775-4208-b67d-bf1781146d15"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Student?studentId=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Student"
+									],
+									"query": [
+										{
+											"key": "studentId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"age\": \"30\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Student",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Student"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"age\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Student",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Student"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}

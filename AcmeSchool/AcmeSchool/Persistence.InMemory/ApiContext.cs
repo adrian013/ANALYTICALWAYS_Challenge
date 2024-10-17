@@ -5,6 +5,10 @@ namespace AcmeSchool.Persistence.InMemory
 {
     public class ApiContext : DbContext
     {
+        public ApiContext(DbContextOptions<ApiContext> options) : base(options)
+        {
+        }
+        
         protected override void OnConfiguring
        (DbContextOptionsBuilder optionsBuilder)
         {
